@@ -1,8 +1,8 @@
 # Team Information
 ## Team Name: UniGate
 ## Team Leader:
-  Name: Mei Zhuzhi
-  GitHub: MZhuzhi
+  - Name: Mei Zhuzhi
+  - GitHub: MZhuzhi
 ## Team Members:
 1. Mei Zhuzhi - GitHub: MZhuzhi - Email: mzhuzhi23@epoka.edu.al
 2. Flavja Llukaj - GitHub: fllukaj - Email: fllukaj23@epoka.edu.al
@@ -29,10 +29,10 @@ Document Upload: Students can upload all the documents they need to send with th
 Admin Dashboard: University staff have their own section on the platform where they can add, edit, or remove programme listings. They can also see all submitted applications, check the uploaded documents, and update the status of each application. This replaces the old way of doing things on paper.
 
 ## Project Scope
-Aim
+- Aim
 To build a working website that lets students in Albania browse university programmes and apply to them online, without needing to go there in person.
 
-Objectives
+- Objectives
 •	Build a website that works on computers, tablets, and phones
 •	Create a list of all available bachelor's and master's programmes with full details for each one
 •	Add a login and registration system so students can create accounts and apply
