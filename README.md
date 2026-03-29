@@ -11,7 +11,7 @@
 5. Rei Greca - GitHub: rgreca - Email: rgreca23@epoka.edu.al
 
 # Project Details
-## Project Title:
+## Project Title:UniGate
 ## Problem Statement
 Applying to a university in Albania means going there in person, waiting in long lines, and handing in paper documents one by one. This process takes a lot of time and can be very stressful, especially for students who live in smaller cities or rural areas far from the university. For students with health issues or disabilities, or for international applicants, it can be almost impossible to travel just to submit an application. On top of that, handling everything on paper means documents can get lost, information can be entered incorrectly, and different universities process things in different ways, which makes the whole experience confusing and unfair. Administrative staff also have a hard time keeping track of everything manually. There is clearly a need for a simple, digital solution that makes the application process easier for everyone in Albania.
 
