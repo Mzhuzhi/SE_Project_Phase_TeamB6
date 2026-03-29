@@ -100,9 +100,9 @@ Database: Create the programmes table and store all programme data.
 Other: Add search/filter and test the pages.
 
 ## Shared Responsibilities
-All members will help connect frontend, backend, and database parts of the application
-All members will participate in testing and fixing bugs
-All members will contribute to documentation and final presentation
+All members will help connect frontend, backend, and database parts of the application.
+All members will participate in testing and fixing bugs.
+All members will contribute to documentation and final presentation.
 
 
 
