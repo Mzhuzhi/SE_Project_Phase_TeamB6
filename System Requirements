@@ -1,1 +1,54 @@
+## Choice Development Model
+Model: Agile (Scrum)
+UniGate follows the Agile (Scrum) methodology. The project is broken down into sprints, with each sprint targeting a set of features that move the platform closer to a fully working system. Each team member owns a specific module: Flavja Llukaj works on the programme catalogue, Stiv Karabeci on authentication, Rei Greca on the application form, Klea Doci on document upload, and Mei Zhuzhi on the admin dashboard. All modules are developed in parallel within the same sprint cycle and progressively integrated. At the end of each sprint, the team reviews progress, resolves integration issues, and adjusts priorities for the next sprint/period.For this kind of web-application,agile model fits the best.
+
+## User Requirements
+a. Stakeholders
+
+Guest (Unregistered Visitor)
+A guest is any anonymous visitor who opens UniGate without an account. Their interest is to freely explore and compare available bachelor's and master's programmes before deciding whether to register and apply.
+
+Student (Registered Applicant)
+A student is a registered user who has created an account on UniGate. Their interest is to complete the full online application process — filling out the application form, uploading required documents, and submitting their application to a chosen programme — without needing to visit the university in person.
+
+University Staff
+University staff are representatives of a university who are responsible for keeping the platform's content accurate and up to date. Their interest is to add, edit, and remove programme listings for their institution, ensuring that students always see correct information about available programmes, entry requirements, tuition fees, and other details.
+
+Admin (System Administrator)
+The admin is the technical role responsible for keeping the UniGate platform running smoothly. Their interest is to manage user accounts, assign roles, monitor system activity, resolve technical issues, and ensure the platform is secure, stable, and available at all times.
+b. User Stories
+
+Guest
+
+•	US-G01: As a guest, I want to browse all available bachelor's and master's programmes without creating an account, so that I can explore my options before committing to registering.
+•	US-G02: As a guest, I want to filter programmes by degree type, language of instruction, and duration, so that I can quickly narrow down programmes that match my preferences.
+•	US-G03: As a guest, I want to view the full details of a programme including entry requirements, tuition fees, and duration, so that I can compare programmes and make an informed decision.
+•	US-G04: As a guest, I want to be prompted to register when I click Apply, so that I understand I need an account before I can submit an application.
+•	US-G05: As a guest, I want the website to work on my mobile phone, so that I can browse programmes while commuting or away from a computer.
+
+Student
+
+•	US-S01: As a student, I want to register with my email and a password, so that I can create a personal account and access the full application process.
+•	US-S02: As a student, I want to log in and out securely, so that my personal data and application details remain private.
+•	US-S03: As a student, I want to fill out a step-by-step application form covering personal details, academic history, and programme choice, so that I can submit a complete application without missing required fields.
+•	US-S04: As a student, I want real-time validation on the application form, so that I can fix mistakes before submitting and avoid having my application rejected due to errors.
+•	US-S05: As a student, I want to upload my required documents — passport, school transcripts, CV, motivation letter, and recommendation letters — in PDF, JPG, or PNG format, so that I can provide all supporting materials alongside my application.
+
+University Staff
+
+•	US-U01: As a university staff member, I want to log in through a dedicated staff login page, so that my access to programme management is separate from the student-facing area.
+•	US-U02: As a university staff member, I want to add new programme listings with all required details, so that prospective students can find and apply to our programmes on UniGate.
+•	US-U03: As a university staff member, I want to edit existing programme details such as entry requirements, tuition fees, and duration, so that the information students see is always accurate and up to date.
+•	US-U04: As a university staff member, I want to remove a programme that is no longer offered, so that students are not able to apply to programmes that are closed or discontinued.
+•	US-U05: As a university staff member, I want to review submitted applications for my university's programmes and update each application's status to accepted or rejected, so that the outcome of each review is recorded in the system.
+
+Admin (System Administrator)
+
+•	US-A01: As an admin, I want to log in through a protected admin panel, so that system management tools are not accessible to students or university staff.
+•	US-A02: As an admin, I want to create, edit, and deactivate user accounts for students and university staff, so that only authorised users have access to the platform.
+•	US-A03: As an admin, I want to assign and change user roles such as student, university staff, or admin, so that each user only has access to the features relevant to their role.
+•	US-A04: As an admin, I want to monitor system activity and view error logs, so that I can detect and resolve technical issues before they affect users.
+•	US-A05: As an admin, I want to manage file storage and uploaded documents, so that the server does not run out of space and all stored files remain organised and accessible.
+
+ 
 
