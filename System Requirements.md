@@ -1,5 +1,6 @@
 ## Choice Development Model
 Model: Agile (Scrum)
+
 UniGate is developed using the Agile (Scrum) methodology. The project is split into short, focused sprints in which each is delivering a working feature such as the program catalogue, authentication, application form, document upload, or the admin dashboard. Agile was chosen because the team has five members each owning a distinct module, so parallel development and continuous integration are essential. Regular sprint reviews allow us to catch integration issues early and adapt the design based on feedback before the deadline.
 
 ## User Requirements
@@ -222,9 +223,11 @@ b. Acceptance Criteria
 ## Application Specifications
 
 a. Architecture
+
 UniGate follows a three-tier architecture consisting of a frontend, backend, and database. The frontend is a React single-page application that sends requests to the backend via REST API calls. The backend is a Node.js/Express server that handles business logic, authentication, file uploads, and role-based access control for four user roles: guest, student, university staff, and admin. The database is a MySQL relational database accessed through Sequelize ORM for efficient data management. Uploaded files are stored in a dedicated directory on the server and referenced in the database by file path. Staff and admin sections are protected areas of the frontend, accessible only to users with the appropriate role.
 
 b. Database Model
+
 The database consists of five tables:
 Universities stores the institution's id, name, and contact reference, linked to its associated staff accounts and programs.
 Users stores the id, name, email, hashed password, and role (student, staff, or admin). Staff accounts also include a university_id foreign key linking them to their institution.
@@ -236,6 +239,7 @@ All foreign keys enforce referential integrity with CASCADE on delete, ensuring 
 
 
 c. Technologies Used
+
 JavaScript (React.js) is used for frontend development to build a component-based and reusable user interface across the application.
 TailwindCSS is used for styling due to its utility-first approach, enabling a fully responsive layout with minimal custom code.
 JavaScript (Node.js with Express) is used for backend development due to its lightweight nature and suitability for building REST APIs.
@@ -245,6 +249,7 @@ Multer is used for file upload handling due to its seamless integration with Exp
 Git and GitHub are used for version control to support collaborative development across the team.
 
 d. User Interface Design
+
 The platform consists of nine main views:
 Home and Catalogue Page displays a searchable and filterable grid of all available programmes, accessible to both guests and students.
 Program Detail Page shows full information for a single program, including an Apply button that redirects unauthenticated users to register.
@@ -256,6 +261,7 @@ Admin Panel provides user account management, role assignment, system log viewin
 All pages share a top navigation bar with the UniGate logo and a login/logout button. 
 
 e. Security Measures
+
 Passwords are hashed using bcrypt before storage, ensuring plaintext passwords are never saved in the database.
 Authentication is managed through JWT tokens with a 24-hour expiry, stored in HTTP-only cookies to prevent client-side access.
 Role-based access control is enforced on the server, ensuring students, staff, and admins can only access their permitted routes.
