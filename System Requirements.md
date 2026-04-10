@@ -5,16 +5,16 @@ UniGate is developed using the Agile (Scrum) methodology. The project is split i
 ## User Requirements
 
 a. Stakeholders
-# Guest (Unregistered Visitor)
+Guest (Unregistered Visitor)
 A guest is any anonymous visitor who opens UniGate without an account. Their interest is to freely explore and compare available bachelor's and master's programmes before deciding whether to register and apply.
 
-# Student (Registered Applicant)
+Student (Registered Applicant)
 A student is a registered user who has created an account on UniGate. Their interest is to complete the full online application process, filling out the application form, uploading required documents, and submitting their application to a chosen program, without needing to visit the university in person.
 
-# University Staff
+University Staff
 University staff are representatives of a university who are responsible for keeping the platform's content accurate and up to date. Their interest is to add, edit, and remove program listings for their institution, and to review and update the status of submitted applications.
 
-# Admin (System Administrator)
+Admin (System Administrator)
 The admin is the technical role responsible for keeping the UniGate platform running smoothly. Their interest is to manage user accounts, assign roles, monitor system activity, resolve technical issues, and ensure the platform is secure, stable, and available at all times.
 
 b. User Stories
