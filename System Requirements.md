@@ -6,73 +6,77 @@ UniGate is developed using the Agile (Scrum) methodology. The project is split i
 
 a. Stakeholders
 Guest (Unregistered Visitor)
+
 A guest is any anonymous visitor who opens UniGate without an account. Their interest is to freely explore and compare available bachelor's and master's programmes before deciding whether to register and apply.
 
 Student (Registered Applicant)
+
 A student is a registered user who has created an account on UniGate. Their interest is to complete the full online application process, filling out the application form, uploading required documents, and submitting their application to a chosen program, without needing to visit the university in person.
 
 University Staff
+
 University staff are representatives of a university who are responsible for keeping the platform's content accurate and up to date. Their interest is to add, edit, and remove program listings for their institution, and to review and update the status of submitted applications.
 
 Admin (System Administrator)
+
 The admin is the technical role responsible for keeping the UniGate platform running smoothly. Their interest is to manage user accounts, assign roles, monitor system activity, resolve technical issues, and ensure the platform is secure, stable, and available at all times.
 
 b. User Stories
 Guest
-•	As a guest, I want to browse all available bachelor's and master's programs without creating an account, so that I can explore my options before committing to registering.
-•	As a guest, I want to filter programs by degree type, language of instruction, and duration, so that I can quickly narrow down programs that match my preferences.
-•	As a guest, I want to view the full details of a program including entry requirements, tuition fees, and duration, so that I can compare programs and make an informed decision.
-•	As a guest, I want to be prompted to register when I click Apply, so that I understand I need an account before I can submit an application.
-•	As a guest, I want the website to work on my mobile phone, so that I can browse programmes while commuting or away from a computer.
+- As a guest, I want to browse all available bachelor's and master's programs without creating an account, so that I can explore my options before committing to registering.
+- As a guest, I want to filter programs by degree type, language of instruction, and duration, so that I can quickly narrow down programs that match my preferences.
+- As a guest, I want to view the full details of a program including entry requirements, tuition fees, and duration, so that I can compare programs and make an informed decision.
+- As a guest, I want to be prompted to register when I click Apply, so that I understand I need an account before I can submit an application.
+- As a guest, I want the website to work on my mobile phone, so that I can browse programmes while commuting or away from a computer.
 
 Student
-•	As a student, I want to register with my email and a password, so that I can create a personal account and access the full application process.
-•	As a student, I want to log in and out securely, so that my personal data and application details remain private.
-•	As a student, I want to land on a personal dashboard after logging in, where I can see all my submitted applications, their current statuses, and my uploaded documents.
-•	As a student, I want to fill out a step-by-step application form covering personal details, academic history, program choice, and document upload, so that I can submit a complete application in one continuous flow.
-•	As a student, I want real-time validation on the application form, so that I can fix mistakes before submitting and avoid having my application rejected due to errors.
-•	As a student, I want the system to check that all required documents are uploaded before I can submit, so that I do not send an incomplete application by mistake.
-•	As a student, I want to be able to apply to multiple universities, with one program per university, so that I can keep my options open without submitting duplicate applications to the same institution.
+- As a student, I want to register with my email and a password, so that I can create a personal account and access the full application process.
+- As a student, I want to log in and out securely, so that my personal data and application details remain private.
+- As a student, I want to land on a personal dashboard after logging in, where I can see all my submitted applications, their current statuses, and my uploaded documents.
+- As a student, I want to fill out a step-by-step application form covering personal details, academic history, program choice, and document upload, so that I can submit a complete application in one continuous flow.
+- As a student, I want real-time validation on the application form, so that I can fix mistakes before submitting and avoid having my application rejected due to errors.
+- As a student, I want the system to check that all required documents are uploaded before I can submit, so that I do not send an incomplete application by mistake.
+- As a student, I want to be able to apply to multiple universities, with one program per university, so that I can keep my options open without submitting duplicate applications to the same institution.
 
 University Staff
-•	As a university staff member, I want to log in through a dedicated staff login page, so that my access to program management is separate from the student-facing area.
-•	As a university staff member, I want to add new program listings with all required details, so that prospective students can find and apply to our program on UniGate.
-•	As a university staff member, I want to edit existing program details such as entry requirements, tuition fees, and duration, so that the information students see is always accurate and up to date.
-•	As a university staff member, I want to remove a program that is no longer offered, so that students are not able to apply to programs that are closed or discontinued.
-•	As a university staff member, I want to review submitted applications for my university's programs and update each application's status to accepted or rejected, so that the outcome of each review is recorded in the system.
+- As a university staff member, I want to log in through a dedicated staff login page, so that my access to program management is separate from the student-facing area.
+- As a university staff member, I want to add new program listings with all required details, so that prospective students can find and apply to our program on UniGate.
+- As a university staff member, I want to edit existing program details such as entry requirements, tuition fees, and duration, so that the information students see is always accurate and up to date.
+- As a university staff member, I want to remove a program that is no longer offered, so that students are not able to apply to programs that are closed or discontinued.
+- As a university staff member, I want to review submitted applications for my university's programs and update each application's status to accepted or rejected, so that the outcome of each review is recorded in the system.
 
 Admin (System Administrator)
-•	As an admin, I want to log in through a protected admin panel, so that system management tools are not accessible to students or university staff.
-•	As an admin, I want to create, edit, and deactivate user accounts for students and university staff, so that only authorised users have access to the platform.
-•	As an admin, I want to assign and change user roles such as student, university staff, or admin, so that each user only has access to the features relevant to their role.
-•	As an admin, I want to monitor system activity and view error logs, so that I can detect and resolve technical issues before they affect users.
-•	As an admin, I want to manage file storage and uploaded documents, so that the server does not run out of space and all stored files remain organised and accessible.
+- As an admin, I want to log in through a protected admin panel, so that system management tools are not accessible to students or university staff.
+- As an admin, I want to create, edit, and deactivate user accounts for students and university staff, so that only authorised users have access to the platform.
+- As an admin, I want to assign and change user roles such as student, university staff, or admin, so that each user only has access to the features relevant to their role.
+- As an admin, I want to monitor system activity and view error logs, so that I can detect and resolve technical issues before they affect users.
+- As an admin, I want to manage file storage and uploaded documents, so that the server does not run out of space and all stored files remain organised and accessible.
 
 ##  Functional Requirements
 a. Description
-•	Any  can brguestowse the program catalogue without an account.
-•	Each program displays degree type, duration, language of instruction, entry requirements, and tuition fees.
-•	Students can filter programs by degree type, language of instruction, and duration.
-•	New students can register with a unique email and a password of at least 8 characters including one number.
-•	Registration is blocked if the email address is already in use.
-•	Registered students can log in with email and password; a signed JWT token is issued upon successful authentication.
-•	Unauthenticated students who attempt to access the application form or document upload are redirected to the login page.
-•	The application form is split into four clearly labelled steps: personal details, academic history, program selection, and document upload, all completed in a single continuous flow.
-•	All required fields are validated in real time with inline error messages for missing or incorrectly formatted inputs.
-•	Each submitted application is saved linked to the logged-in student's account and the selected program.
-•	Students can upload documents in PDF, JPG, and PNG formats only; any other file type is rejected with an error message.
-•	Uploaded file paths are stored in the documents table and associated with the correct application.
-•	University staff can log in through a dedicated staff login page and access only the program and application management area for their linked university.
-•	University staff can add a new program with all required fields; it appears immediately in the public catalogue.
-•	University staff can edit existing program details and delete programs that are no longer offered.
-•	University staff can view all submitted applications for their university's programs, open individual applications, and update each application's status to accepted or rejected.
-•	The admin panel is accessible only to users with the admin role and returns HTTP 403 for all other users.
-•	The admin can create, edit, and deactivate user accounts and assign or change user roles.
-•	The admin can view system logs and monitor uploaded file storage.
-•	All pages are served responsively and remain usable on screens with a minimum width of 320 px.
-•	After logging in, a student is directed to a personal dashboard displaying all submitted applications, the current status of each (pending, accepted, or rejected), and the documents attached to each application.
-•	UniGate supports multiple Albanian universities, each stored as a distinct record in the system. Every program is linked to exactly one university. A student may apply to more than one university but is restricted to one program per university at any given time.
-•	Before submission, the system checks that all required documents have been uploaded. If any are missing, submission is blocked and the student is shown a message identifying exactly which documents are still needed.
+- Any  can brguestowse the program catalogue without an account.
+- Each program displays degree type, duration, language of instruction, entry requirements, and tuition fees.
+- Students can filter programs by degree type, language of instruction, and duration.
+- New students can register with a unique email and a password of at least 8 characters including one number.
+- Registration is blocked if the email address is already in use.
+- Registered students can log in with email and password; a signed JWT token is issued upon successful authentication.
+- Unauthenticated students who attempt to access the application form or document upload are redirected to the login page.
+- The application form is split into four clearly labelled steps: personal details, academic history, program selection, and document upload, all completed in a single continuous flow.
+- All required fields are validated in real time with inline error messages for missing or incorrectly formatted inputs.
+- Each submitted application is saved linked to the logged-in student's account and the selected program.
+- Students can upload documents in PDF, JPG, and PNG formats only; any other file type is rejected with an error message.
+- Uploaded file paths are stored in the documents table and associated with the correct application.
+- University staff can log in through a dedicated staff login page and access only the program and application management area for their linked university.
+- University staff can add a new program with all required fields; it appears immediately in the public catalogue.
+- University staff can edit existing program details and delete programs that are no longer offered.
+- University staff can view all submitted applications for their university's programs, open individual applications, and update each application's status to accepted or rejected.
+- The admin panel is accessible only to users with the admin role and returns HTTP 403 for all other users.
+- The admin can create, edit, and deactivate user accounts and assign or change user roles.
+- The admin can view system logs and monitor uploaded file storage.
+- All pages are served responsively and remain usable on screens with a minimum width of 320 px.
+- After logging in, a student is directed to a personal dashboard displaying all submitted applications, the current status of each (pending, accepted, or rejected), and the documents attached to each application.
+- UniGate supports multiple Albanian universities, each stored as a distinct record in the system. Every program is linked to exactly one university. A student may apply to more than one university but is restricted to one program per university at any given time.
+- Before submission, the system checks that all required documents have been uploaded. If any are missing, submission is blocked and the student is shown a message identifying exactly which documents are still needed.
 
 b. Acceptance Criteria
 1. User Authentication Acceptance Criteria
