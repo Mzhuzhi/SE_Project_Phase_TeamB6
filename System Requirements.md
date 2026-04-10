@@ -5,16 +5,16 @@ UniGate is developed using the Agile (Scrum) methodology. The project is split i
 ## User Requirements
 
 a. Stakeholders
-#Guest (Unregistered Visitor)
+# Guest (Unregistered Visitor)
 A guest is any anonymous visitor who opens UniGate without an account. Their interest is to freely explore and compare available bachelor's and master's programmes before deciding whether to register and apply.
 
-#Student (Registered Applicant)
+# Student (Registered Applicant)
 A student is a registered user who has created an account on UniGate. Their interest is to complete the full online application process, filling out the application form, uploading required documents, and submitting their application to a chosen program, without needing to visit the university in person.
 
-#University Staff
+# University Staff
 University staff are representatives of a university who are responsible for keeping the platform's content accurate and up to date. Their interest is to add, edit, and remove program listings for their institution, and to review and update the status of submitted applications.
 
-#Admin (System Administrator)
+# Admin (System Administrator)
 The admin is the technical role responsible for keeping the UniGate platform running smoothly. Their interest is to manage user accounts, assign roles, monitor system activity, resolve technical issues, and ensure the platform is secure, stable, and available at all times.
 
 b. User Stories
@@ -48,7 +48,7 @@ Admin (System Administrator)
 •	As an admin, I want to monitor system activity and view error logs, so that I can detect and resolve technical issues before they affect users.
 •	As an admin, I want to manage file storage and uploaded documents, so that the server does not run out of space and all stored files remain organised and accessible.
 
-##Functional Requirements
+##  Functional Requirements
 a. Description
 •	Any  can brguestowse the program catalogue without an account.
 •	Each program displays degree type, duration, language of instruction, entry requirements, and tuition fees.
@@ -118,7 +118,7 @@ b. Acceptance Criteria
 •	A student cannot edit or withdraw an application after it has been submitted.
 •	Selecting an application from the dashboard opens a read-only detail view showing all submitted fields and uploaded documents.
 
-##Non-Functional Requirements
+## Non-Functional Requirements
 a. Description
 Usability
 •	The main navigation bar must expose all key sections of the platform from every page, so that a user never needs more than two clicks to reach any primary feature from any location on the site.
@@ -215,7 +215,7 @@ b. Acceptance Criteria
 •	All API endpoints validate the JWT token on every request; a missing or tampered token returns HTTP 401.
 •	No stack traces, file paths, or internal variable names are present in any error response body.
 
-##Application Specifications
+## Application Specifications
 
 a. Architecture
 UniGate follows a three-tier architecture consisting of a frontend, backend, and database. The frontend is a React single-page application that sends requests to the backend via REST API calls. The backend is a Node.js/Express server that handles business logic, authentication, file uploads, and role-based access control for four user roles: guest, student, university staff, and admin. The database is a MySQL relational database accessed through Sequelize ORM for efficient data management. Uploaded files are stored in a dedicated directory on the server and referenced in the database by file path. Staff and admin sections are protected areas of the frontend, accessible only to users with the appropriate role.
