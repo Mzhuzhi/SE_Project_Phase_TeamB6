@@ -80,48 +80,52 @@ a. Description
 - Before submission, the system checks that all required documents have been uploaded. If any are missing, submission is blocked and the student is shown a message identifying exactly which documents are still needed.
 
 b. Acceptance Criteria
-1. User Authentication Acceptance Criteria
-- A new student registers with a unique email and a password of at least 8 characters containing at least one number.
-- If the email is already in use, registration is blocked and an inline error is shown adjacent to the email field.
-- Upon successful registration the user is redirected to the login page.
-- The system verifies submitted credentials against the bcrypt-hashed value stored in the database.
-- Upon successful login a signed JWT is issued and stored in an HTTP-only cookie.
-- The student is redirected to their role-appropriate destination: students to their dashboard, staff to the staff dashboard, and admins to the admin panel.
-- Incorrect credentials return an error message and no token is issued.
-- The JWT expires after 24 hours, requiring the user to log in again.
 
-2. Program Catalogue Acceptance Criteria
-- Any visitor, guest or authenticated student, can access the catalogue without restriction.
-- The catalogue displays all programs in a searchable, filterable grid.
-- Filtering by degree type, language of instruction, or duration updates the list without a full page reload.
-- Selecting a program opens a detail page showing entry requirements, tuition fees, duration, and language of instruction.
-- A guest clicking Apply is redirected to the registration page with a message that an account is required.
-- A logged-in student clicking Apply is taken directly into the application form for that program.
+1. New students can register with a unique email and a password of at least 8 characters including one number.
 
-4. Application Form Acceptance Criteria
-- Only authenticated students can access the application form; unauthenticated users are redirected to the login page.
-- The form is divided into clearly labelled steps: personal details, academic history, programme selection, and document upload.
-- A student cannot proceed to the next step if any required field is incomplete or incorrectly formatted.
-- Each validation error is displayed inline and in plain language describing what is wrong.
-- The system enforces the one-programme-per-university rule and blocks selection if the student has already applied to that university.
-- The final step presents a full summary of all entered information before submission.
-- If any required document is missing, submission is blocked and the student is informed of exactly which documents are needed.
-- Upon successful submission the application is saved and linked to the student's account and selected programme.
+Acceptance Criteria:
+- The registration form accepts an email address and a password field.
+- The system checks that the email has not been previously used by another account.
+- The system checks that the password is at least 8 characters long and contains at least one number.
+- If all conditions are met, the account is created and the student is redirected to the login page.
+- If any condition fails, an inline error message is displayed next to the relevant field.
 
-5. Document Upload Acceptance Criteria
-- Document upload is presented as a dedicated step within the application form flow.
-- Students can upload files in PDF, JPG, and PNG formats only.
-- Attempting to upload a file of any other format returns an inline error and the file is not saved.
-- Each uploaded file is displayed in a list showing the file name, type, and a removal option before submission.
-- Upon successful upload each file is saved to the server and its path is recorded in the documents table linked to the correct application.
-- The system identifies which document types are required and marks each as pending or uploaded so the student can track what is still missing.
+2. Registered students can log in with email and password; a signed JWT token is issued upon successful authentication.
 
-6. Application Status & Student Dashboard Acceptance Criteria
-- A logged-in student lands on their dashboard immediately after authentication.
-- The dashboard displays all submitted applications, each showing the programme name, university, submission date, and current status.
-- Status values are limited to pending, accepted, and rejected, and reflect the most recent update made by university staff.
-- A student cannot edit or withdraw an application after it has been submitted.
-- Selecting an application from the dashboard opens a read-only detail view showing all submitted fields and uploaded documents.
+Acceptance Criteria:
+- The login form accepts an email and a password.
+- The system verifies the submitted credentials against the bcrypt-hashed value stored in the database.
+- Upon successful verification, a signed JWT token is generated and stored in an HTTP-only cookie.
+- The student is redirected to their role-appropriate destination after login.
+- If credentials are incorrect, an error message is returned and no token is issued.
+
+3. The application form is split into four clearly labelled steps: personal details, academic history, program selection, and document upload, all completed in a single continuous flow.
+
+Acceptance Criteria:
+- The form renders four distinct steps, each with a visible label identifying its purpose.
+- The student cannot skip to a later step without completing the current one.
+- A progress indicator reflects which step the student is currently on.
+- All data entered in previous steps is retained when moving forward or backward through the form.
+- The entire form is submitted as one complete record upon final confirmation.
+
+4. Students can upload documents in PDF, JPG, and PNG formats only; any other file type is rejected with an error message.
+
+Acceptance Criteria:
+- The upload input accepts file selection from the student's device.
+- The system checks both the MIME type and file extension of each uploaded file on the server side.
+- Files in formats other than PDF, JPG, and PNG are rejected before being saved to the server.
+- An inline error message is displayed to the student identifying the rejected file.
+- Accepted files are displayed in a list showing the file name and type before final submission.
+
+5. Before submission, the system checks that all required documents have been uploaded. If any are missing, submission is blocked and the student is shown a message identifying exactly which documents are still needed.
+
+Acceptance Criteria:
+- The system identifies which document types are marked as required for the selected program.
+- At the point of submission, the system cross-checks uploaded documents against the required list.
+- If one or more required documents are missing, the submit button does not process the form.
+- The student is shown a message that lists the specific document types that have not yet been uploaded.
+- Submission proceeds only when all required documents are present and all other form fields are valid.
+
 
 ## Non-Functional Requirements
 a. Description
@@ -185,40 +189,51 @@ API Response Consistency
 - All error responses must include an appropriate HTTP status code: 400 for validation errors, 401 for unauthenticated requests, 403 for unauthorised access, and 500 for unhandled server errors.
 
 b. Acceptance Criteria
-1. Password Storage Acceptance Criteria
-- Passwords are hashed using bcrypt with a minimum cost factor of 10 before being written to the database.
-- A database inspection of any user record reveals no plaintext or reversibly-encoded password.
-- Login verification uses bcrypt's comparison function, not string equality.
-- Passwords are never logged in server logs, error messages, or API responses.
-- If a registration or password-change request fails, no partial plaintext data is persisted.
 
-2. Input Validation Acceptance Criteria
-- All text fields submitted via API are stripped of leading and trailing whitespace before processing.
-- Inputs containing SQL special characters are safely handled via Sequelize parameterised queries and do not alter database behaviour.
-- Inputs containing HTML or script tags are escaped or rejected server-side and never rendered as executable markup in the browser.
-- Fields with defined maximum lengths reject input exceeding those limits with a 400 response identifying the offending field.
-- Validation errors return a structured JSON response specifying which field failed and why.
+1. All passwords must be hashed with bcrypt at a cost factor of 10 or higher before being stored.
 
-3. Responsiveness Acceptance Criteria
-- All interactive elements including buttons, forms, and file upload controls remain fully tappable and functional on a mobile touchscreen.
-- The application layout adjusts correctly at breakpoints for mobile (320 px–767 px), tablet (768 px–1024 px), and desktop (1025 px and above).
-- No horizontal scrolling occurs on any page at any of the defined breakpoints.
-- Font sizes remain legible at a minimum of 14 px body text across all screen sizes.
-- The application form and document upload step are both fully operable on a mobile device without zooming.
+Acceptance Criteria:
+- When a student registers or changes their password, the system applies bcrypt hashing before writing to the database.
+- The cost factor used is set to a minimum of 10 in the bcrypt configuration.
+- A direct inspection of any user record in the database reveals no plaintext or reversibly-encoded password.
+- Login verification uses bcrypt's comparison function rather than string equality.
+- Passwords are never recorded in server logs, error messages, or API responses under any circumstance.
 
-4. Session Management Acceptance Criteria
-- After 24 hours, a test session token is automatically invalidated.
-- Any subsequent request to a protected route using an expired token returns HTTP 401 and redirects the user to the login page.
-- The original protected page is not rendered until the user successfully re-authenticates.
-- JWT tokens are stored in HTTP-only cookies and are not accessible via client-side JavaScript.
-- Logging out invalidates the session on the client by clearing the HTTP-only cookie.
+2. The platform must handle at least 50 concurrent users without errors or timeouts.
 
-5. Security Acceptance Criteria
-- Inspecting the database confirms no plaintext passwords are stored in any user record.
-- Attempting to upload a file that is not PDF, JPG, or PNG is rejected server-side before the file is written to disk, and an error message is returned.
-- A student session token cannot access the staff or admin routes; a staff token cannot access the admin panel. Both return HTTP 403.
-- All API endpoints validate the JWT token on every request; a missing or tampered token returns HTTP 401.
-- No stack traces, file paths, or internal variable names are present in any error response body.
+Acceptance Criteria:
+- A load test simulating 50 simultaneous users performing typical actions is run against the platform.
+- No request during the test returns a server error (HTTP 5xx) or times out.
+- Response times remain within acceptable limits throughout the duration of the test.
+- The test covers core actions including browsing the catalogue, logging in, and submitting an application.
+- Results are recorded and reviewed to confirm the platform meets the 50-user threshold.
+
+3. The platform must maintain a minimum uptime of 99.5% measured on a monthly basis, excluding scheduled maintenance windows.
+
+Acceptance Criteria:
+- Uptime is monitored continuously using a system that records availability at regular intervals throughout each month.
+- At the end of each month, total downtime excluding scheduled maintenance is calculated and must not exceed 0.5% of the monthly total time.
+- Any unplanned outage is logged with a start time, end time, and cause.
+- Scheduled maintenance windows are excluded from the uptime calculation provided they were communicated at least 24 hours in advance via an on-site banner.
+- A monthly uptime report is generated and accessible to the admin for review.
+
+4. All unhandled server-side errors must return a generic, user-friendly error page with no stack traces or internal system details exposed.
+
+Acceptance Criteria:
+- A test request that triggers an unhandled server error receives a response with an appropriate HTTP status code (500).
+- The response body contains a generic, plain-language message that does not include a stack trace, file path, or internal variable name.
+- The error page matches the visual style of the rest of the platform.
+- The actual error details are written to a server-side log accessible only to the admin, not to the end user.
+- This behaviour is consistent across all routes and for all user roles.
+
+5. All API endpoints must return responses in a consistent JSON structure containing a status field, a data field for successful responses, and a message field for errors.
+
+Acceptance Criteria:
+- Every API endpoint, when called successfully, returns a JSON object that includes a status field and a data field containing the relevant response payload.
+- Every API endpoint, when an error occurs, returns a JSON object that includes a status field and a message field describing the error in plain language.
+- The HTTP status code of each response matches the nature of the outcome: 200 for success, 400 for validation errors, 401 for unauthenticated requests, 403 for unauthorised access, and 500 for unhandled server errors.
+- A review of all route handlers confirms no endpoint returns a response that deviates from this structure.
+- Automated tests covering both success and error paths for each critical endpoint verify the structure is enforced consistently.
 
 ## Application Specifications
 
