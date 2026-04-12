@@ -129,6 +129,7 @@ Acceptance Criteria:
 
 ## Non-Functional Requirements
 a. Description
+
 Usability
 - The main navigation bar must expose all key sections of the platform from every page, so that a user never needs more than two clicks to reach any primary feature from any location on the site.
 - All form error messages must be written in plain language and displayed adjacent to the relevant field.
