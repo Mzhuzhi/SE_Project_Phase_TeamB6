@@ -255,34 +255,34 @@ All foreign keys enforce referential integrity with CASCADE on delete, ensuring 
 
 c. Technologies Used
 
-JavaScript (React.js) is used for frontend development to build a component-based and reusable user interface across the application.
-TailwindCSS is used for styling due to its utility-first approach, enabling a fully responsive layout with minimal custom code.
-JavaScript (Node.js with Express) is used for backend development due to its lightweight nature and suitability for building REST APIs.
-MySQL with Sequelize ORM is used as the database for its relational structure and efficient data management, with Sequelize simplifying queries and schema migrations.
-JWT and bcrypt are used for authentication due to their reliability in managing secure sessions and password hashing.
-Multer is used for file upload handling due to its seamless integration with Express and built-in file validation.
-Git and GitHub are used for version control to support collaborative development across the team.
+- JavaScript (React.js) is used for frontend development to build a component-based and reusable user interface across the application.
+- TailwindCSS is used for styling due to its utility-first approach, enabling a fully responsive layout with minimal custom code.
+- JavaScript (Node.js with Express) is used for backend development due to its lightweight nature and suitability for building REST APIs.
+- MySQL with Sequelize ORM is used as the database for its relational structure and efficient data management, with Sequelize simplifying queries and schema migrations.
+- JWT and bcrypt are used for authentication due to their reliability in managing secure sessions and password hashing.
+- Multer is used for file upload handling due to its seamless integration with Express and built-in file validation.
+- Git and GitHub are used for version control to support collaborative development across the team.
 
 d. User Interface Design
 
 The platform consists of nine main views:
-Home and Catalogue Page displays a searchable and filterable grid of all available programmes, accessible to both guests and students.
-Program Detail Page shows full information for a single program, including an Apply button that redirects unauthenticated users to register.
-Register and Login Pages contain simple centered forms with inline validation feedback.
-Student Dashboard serves as the landing page for authenticated students, displaying all submitted applications with their current statuses and attached documents.
-Application Form Page is a stepped form with a progress indicator guiding the student through personal details, academic history, program selection, and document upload.
-University Staff Dashboard has two sections:Programs for managing listings, and Applications for reviewing submissions and updating statuses.
-Admin Panel provides user account management, role assignment, system log viewing, and file storage monitoring.
+- Home and Catalogue Page displays a searchable and filterable grid of all available programmes, accessible to both guests and students.
+- Program Detail Page shows full information for a single program, including an Apply button that redirects unauthenticated users to register.
+- Register and Login Pages contain simple centered forms with inline validation feedback.
+- Student Dashboard serves as the landing page for authenticated students, displaying all submitted applications with their current statuses and attached documents.
+- Application Form Page is a stepped form with a progress indicator guiding the student through personal details, academic history, program selection, and document upload.
+- University Staff Dashboard has two sections:Programs for managing listings, and Applications for reviewing submissions and updating statuses.
+- Admin Panel provides user account management, role assignment, system log viewing, and file storage monitoring.
 All pages share a top navigation bar with the UniGate logo and a login/logout button. 
 
 e. Security Measures
 
-Passwords are hashed using bcrypt before storage, ensuring plaintext passwords are never saved in the database.
-Authentication is managed through JWT tokens with a 24-hour expiry, stored in HTTP-only cookies to prevent client-side access.
-Role-based access control is enforced on the server, ensuring students, staff, and admins can only access their permitted routes.
-File uploads are validated by MIME type and file extension, rejecting any files that are not PDF, JPG, or PNG before they are saved.
-All database queries use Sequelize parameterised queries to protect against SQL injection attacks.
-HTTPS is enforced in production to encrypt all data transmitted between the client and the server.
+- Passwords are hashed using bcrypt before storage, ensuring plaintext passwords are never saved in the database.
+- Authentication is managed through JWT tokens with a 24-hour expiry, stored in HTTP-only cookies to prevent client-side access.
+- Role-based access control is enforced on the server, ensuring students, staff, and admins can only access their permitted routes.
+- File uploads are validated by MIME type and file extension, rejecting any files that are not PDF, JPG, or PNG before they are saved.
+- All database queries use Sequelize parameterised queries to protect against SQL injection attacks.
+- HTTPS is enforced in production to encrypt all data transmitted between the client and the server.
 
 
 
