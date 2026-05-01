@@ -33,3 +33,9 @@ Admin manages users:
 - Backend sends user data back to Frontend
 - Admin confirms changes (role update / deactivation)
 - Changes stored in Database
+
+- Component Diagram (UML)
+  <img width="545" height="332" alt="image" src="https://github.com/user-attachments/assets/3dd1cd89-ea6f-4ce4-b731-668cd164e6b8" />
+
+
+  
