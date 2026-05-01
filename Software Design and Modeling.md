@@ -84,130 +84,34 @@ Admin manages users:
   - Student Registration and Login
 
 
-<img width="781" height="1406" alt="image" src="https://github.com/user-attachments/assets/94358be7-b6cc-4b27-bf3b-6480bb97d417" />
+
+<img width="662" height="849" alt="image" src="https://github.com/user-attachments/assets/458f4695-be80-48e5-a19b-0cf01b5adef2" />
 
 
 
     
+     
+     
+     - Submit Application & Upload Documents
 
 
-  
-    
-    
-   
-    
-    
-    
-    
-    
-    
-    
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    - Submit Application & Upload Documents
 
-
-<img width="781" height="1297" alt="image" src="https://github.com/user-attachments/assets/fa6a6895-92eb-46c3-9ac2-bc8e2663c218" />
+<img width="630" height="1045" alt="image" src="https://github.com/user-attachments/assets/3251a7a8-79ea-4e56-9da4-0a9d2424d6b6" />
 
 
 
 
+ # State Diagram
 
 
-   
-    
-    
-    
-    
-    
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    # State Diagram
+ <img width="603" height="385" alt="image" src="https://github.com/user-attachments/assets/cf439973-a603-4eaf-9afd-705058f95dba" />
 
-  <img width="975" height="623" alt="image" src="https://github.com/user-attachments/assets/bfceebe5-ec07-49c6-8a28-c2eecceead5d" />
 
 
   
   
   
-  
- 
-  
-  
-  
-  
-  <img width="975" height="731" alt="image" src="https://github.com/user-attachments/assets/5818fca8-ed41-4236-98c3-caca25b26f87" />
+  <img width="489" height="367" alt="image" src="https://github.com/user-attachments/assets/61e53f25-8816-4e13-adff-c01b199c7962" />
 
 
 
