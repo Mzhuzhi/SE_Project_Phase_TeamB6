@@ -53,9 +53,15 @@ Admin manages users:
 
 
 
+
+
 - Submit Application
 
 <img width="614" height="448" alt="image" src="https://github.com/user-attachments/assets/290f51f2-0af8-4ae7-8f8b-e8815d9279cf" />
+
+
+
+
 
 
 
@@ -75,14 +81,20 @@ Admin manages users:
   # Activity Diagram
   - Student Registration and Login
 
-    <img width="746" height="1294" alt="image" src="https://github.com/user-attachments/assets/e138bf28-a4ce-447b-8e3e-7ae3c5341f78" />
+<img width="746" height="1294" alt="image" src="https://github.com/user-attachments/assets/14118d1d-e337-4ed4-bcd1-fa66d473c017" />
+
 
     
 
 
+  
+    
+    
     - Submit Application & Upload Documents
 
-      <img width="723" height="1053" alt="image" src="https://github.com/user-attachments/assets/946088ae-7313-4bd6-9d90-adac695146d9" />
+<img width="746" height="1294" alt="image" src="https://github.com/user-attachments/assets/92028421-33ae-43b3-a2d7-ed8d32a0cc01" />
+
+
 
 
 
@@ -91,6 +103,11 @@ Admin manages users:
   <img width="975" height="623" alt="image" src="https://github.com/user-attachments/assets/bfceebe5-ec07-49c6-8a28-c2eecceead5d" />
 
 
+  
+  
+  
+  
+ 
   
   
   
