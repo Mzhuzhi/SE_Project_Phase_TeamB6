@@ -92,6 +92,14 @@ Admin manages users:
   
     
     
+   
+    
+    
+    
+    
+    
+    
+    
     - Submit Application & Upload Documents
 
 
@@ -102,6 +110,12 @@ Admin manages users:
 
 
 
+   
+    
+    
+    
+    
+    
     # State Diagram
 
   <img width="975" height="623" alt="image" src="https://github.com/user-attachments/assets/bfceebe5-ec07-49c6-8a28-c2eecceead5d" />
