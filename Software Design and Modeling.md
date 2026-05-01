@@ -74,7 +74,9 @@ Admin manages users:
 
 # USE CASE DIAGRAM
 
-  <img width="940" height="575" alt="image" src="https://github.com/user-attachments/assets/948f6422-e14a-47f6-8344-5d294f8e4c5a" />
+
+<img width="940" height="575" alt="image" src="https://github.com/user-attachments/assets/eecdb119-5924-4850-8474-aedc4cb28e10" />
+
 
   
   
@@ -100,6 +102,34 @@ Admin manages users:
     
     
     
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     - Submit Application & Upload Documents
 
 
@@ -111,6 +141,53 @@ Admin manages users:
 
 
    
+    
+    
+    
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
