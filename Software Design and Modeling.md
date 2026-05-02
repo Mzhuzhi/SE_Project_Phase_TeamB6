@@ -39,7 +39,33 @@ Admin manages users:
    <img width="1249" height="762" alt="image" src="https://github.com/user-attachments/assets/f8a31607-c1d5-4c06-9532-94268efbb1d7" />
 
 
-  # Detailed Design
+
+
+
+   - Left side:
+UniGate Web System: the main external actor that interacts with the entire system, operated by the System Admin of UniGate. It serves as the entry point for all system operations and sends requests to all internal components.
+- Middle part (Components):
+Program Catalogue: manages the listing and retrieval of available academic programs. Connects to the database through Data Access.
+Auth Module: handles user authentication and login verification. Connects to the database through Data Access.
+Application Form: processes student application submissions and form management. Connects to the database through Data Access.
+Document Upload: manages the uploading and storage of required applicant documents. Connects to the database through Data Access.
+Admin Dashboard: provides administrative controls and system oversight for UniGate staff. Connects to the database through Data Access.
+Data Access: each component communicates with the persistence and security layers through a Data Access interface, meaning it reads and writes data from the database through controlled channels.
+- Right side (Services):
+Security: handles encryption and access control for the system. It receives encrypted data and manages access permissions for all components that communicate with it through the Encryption and Access Control interfaces.
+Persistence: responsible for storing and retrieving data reliably. Similar to Security, it operates through Encryption and Access Control interfaces, ensuring that all data passed through it is protected before being stored.
+Database: the central data storage system that receives processed data from the Persistence layer and makes it available for retrieval.
+Database Connector: serves as the interface between the Database and external or internal systems, managing the connection and communication with the database.
+
+
+
+
+
+
+
+
+
+   # Detailed Design
    # Class Diagram
 
      <img width="940" height="626" alt="image" src="https://github.com/user-attachments/assets/2567644e-0f17-49ba-b92a-de7dad7d5dc1" />
