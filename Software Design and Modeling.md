@@ -52,8 +52,8 @@ Admin manages users:
 
 
 
-- Left side:
-UniGate Web System: the main external actor that interacts with the entire system, operated by the System Admin of UniGate. It serves as the entry point for all system operations and sends requests to all internal components.
+   - Left side:
+- UniGate Web System: the main external actor that interacts with the entire system, operated by the System Admin of UniGate. It serves as the entry point for all system operations and sends requests to all internal components.
    - Middle part (Components):
 - Program Catalogue: manages the listing and retrieval of available academic programs. Connects to the database through Data Access.
 - Auth Module: handles user authentication and login verification. Connects to the database through Data Access.
