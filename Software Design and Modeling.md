@@ -5,7 +5,7 @@ Here's how each user type interacts with the system:
 Guest browses programs:
 - Guest selects a program to view (Frontend)
 - Request goes to Backend
-- Backend checks Database (programs table — degree type, duration, language, fees, entry requirements)
+- Backend checks Database (programs table :degree type, duration, language, fees, entry requirements)
 - Backend sends program details back to Frontend
 - Guest sees the full program information displayed
 
