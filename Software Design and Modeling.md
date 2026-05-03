@@ -78,7 +78,8 @@ Admin manages users:
    # Detailed Design
    # Class Diagram
 
-     <img width="940" height="626" alt="image" src="https://github.com/user-attachments/assets/2567644e-0f17-49ba-b92a-de7dad7d5dc1" />
+     <img width="1003" height="625" alt="image" src="https://github.com/user-attachments/assets/a705d6a3-4d9c-410b-b524-96a2ca4840f9" />
+
 
 
 # Sequence Diagram
