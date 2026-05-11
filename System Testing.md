@@ -63,7 +63,7 @@ The tests run against a dedicated test database (unigate_test), separate from th
 
 - # TC07 : the one-per-university rule
 
-
+  ```javascript
 test('TC07: blocks second application to the same university', async () => {
   const cookie = await loginAsStudent();
 
@@ -83,14 +83,13 @@ test('TC07: blocks second application to the same university', async () => {
       gpa: 3.8,
     });
 
-  // Second application to a different program at the same
+  // Second application to a different programme at the same
   // university should be blocked
   const res = await request(app)
     .post('/api/applications')
     .set('Cookie', cookie)
     .send({
       program_id: seedData.masterProgram.id,
-      // ...same applicant fields...
       bachelor_school_name: 'University of Tirana',
       bachelor_school_country: 'Albania',
       bachelor_graduation_year: 2022,
@@ -99,8 +98,10 @@ test('TC07: blocks second application to the same university', async () => {
 
   expect(res.status).toBe(409);
 });
+```
 
-  
+
+
   
   - # TC02 : the security boundary
 
@@ -108,6 +109,7 @@ test('TC07: blocks second application to the same university', async () => {
 
 This test checks a security rule: a staff member should only be able to create programmes at their own university, even if they try to cheat.
 
+```javascript
 test('TC02: ignores university_id sent in request body', async () => {
   const cookie = await loginAsTiranaStaff();
   const payload = validProgrammePayload();
@@ -122,14 +124,17 @@ test('TC02: ignores university_id sent in request body', async () => {
   // The created programme must belong to Tirana, NOT Epoka
   expect(res.body.data.university_id).toBe(seedData.tirana.id);
 });
+```
 
 - # TC05 : Master applications require bachelor fields
 
 
 This test checks that the system correctly rejects a Master's application when the bachelor's degree fields are missing. Since a Master's programme requires proof of a previous degree, the server must ask for extra information that a Bachelor's application does not need. In this test, a student submits an application for a Master's programme but leaves out the bachelor's degree details on purpose. The expected result is a 400 error, confirming that the server catches the missing fields and blocks the incomplete application.
 
+```javascript
 test('TC05: rejects Master application missing bachelor fields', async () => {
   const cookie = await loginAsStudent();
+
   const res = await request(app)
     .post('/api/applications')
     .set('Cookie', cookie)
@@ -149,7 +154,7 @@ test('TC05: rejects Master application missing bachelor fields', async () => {
 
   expect(res.status).toBe(400);
 });
-
+```
 The full test suites contain 17 tests across two files: 8 for the application submission endpoint and 9 for the staff program creation endpoint.
 
 # 6. Running Tests
