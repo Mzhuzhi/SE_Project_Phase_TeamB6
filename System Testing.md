@@ -25,7 +25,7 @@ For each case, the expected behaviour was determined from the system requirement
 
 | Test ID | Scenario | Input | Expected Result |
 |---|---|---|---|
-| TC01 | Valid Bachelor application | All required fields filled, valid GPA in 0–4 range | 201 Created — application stored, status "pending" |
+| TC01 | Valid Bachelor application | All required fields filled, valid GPA in 0–4 range | 201 Created : application stored, status "pending" |
 | TC02 | Missing required field | high_school_name omitted | 400 Bad Request: validation error |
 | TC03 | Invalid graduation year (boundary) | graduation_year = 1800 (below 1950 floor) | 400 Bad Request: out of range |
 | TC04 | Invalid GPA (boundary) | gpa = 5 (above 4 ceiling) | 400 Bad Request: out of range |
