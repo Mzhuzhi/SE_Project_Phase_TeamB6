@@ -1,49 +1,66 @@
 # 1. Introduction to Testing
+
 - Software testing is the process of evaluating software to identify defects, bugs, and unexpected behaviour. It involves running parts of the system under controlled conditions and comparing the actual output to the expected output, with the goal of finding mistakes before they reach end users.
+
 - Testing is essential in software development because it improves the reliability of the system (the software keeps working as intended over time), the correctness of its features (every component does what it is supposed to do), and its maintainability (developers can change the code with confidence that nothing important has been silently broken). For a platform like UniGate, where students submit personal data and university staff make decisions based on that data, testing is not optional, instead it is a core part of building software that can be trusted.
 
 # 2. Purpose of Testing
 - Testing serves two core purposes in software development. The first is to identify defects early, before they reach users or become expensive to fix. Catching a bug at the testing stage costs significantly less time and effort than discovering it after deployment, especially on a platform like UniGate where a broken submission flow or a security gap could directly affect students' applications.
+
 - The second purpose is to verify that software components behave as intended under both expected and unexpected conditions. A component that handles only the standard path is not finished as it must also reject invalid inputs, refuse unauthorised actions, and respond predictably when something goes wrong. Tests prove that these behaviours actually work as intended.
 
 # 3. Focus on Testing a Single Component
-For this report, we tested two critical components of the UniGate platform: the Student Application Submission endpoint and the Staff Program Creation endpoint. These two were chosen because they cover both ends of the platform’s most important workflow:the moment a student commits their application, and the moment a university staff member adds a new program to the catalogue.
-Both components were also chosen because they have clear inputs and outputs at the API layer, which makes them ideal candidates for integration testing. The tests in this report exercise these endpoints through real HTTP requests and verify the responses against expected behaviour.
+
+For this report, we tested two critical components of the UniGate platform: the Student Application Submission endpoint and the Staff Program Creation endpoint. These two were chosen because they cover both ends of the platform’s most important workflow:the moment a student commits their application, and the moment a university staff member adds a new program to the catalogue.Both components were also chosen because they have clear inputs and outputs at the API layer, which makes them ideal candidates for integration testing. The tests in this report exercise these endpoints through real HTTP requests and verify the responses against expected behaviour.
 
 # 4.Preparing Test Cases
+
 The test cases were designed to cover three categories of input: valid inputs (where everything is correct and the request should succeed), invalid inputs (where something is wrong, such as a missing field, a security violation, or a broken business rule), and boundary conditions (edge values that sit right at the limit of what is allowed, such as a GPA of exactly 4 or a graduation year of 1950).
 For each case, the expected behaviour was determined from the system requirements document and the validation rules implemented in the route handlers.
 
 # 4.1 Test Case: Application Submission 
-Test ID	Scenario	Input	Expected Result
-TC01	Valid Bachelor application	All required fields filled, valid GPA in 0–4 range	201 Created — application stored, status "pending"
-TC02	Missing required field	high_school_name omitted	400 Bad Request — validation error
-TC03	Invalid graduation year (boundary)	graduation_year = 1800 (below 1950 floor)	400 Bad Request — out of range
-TC04	Invalid GPA (boundary)	gpa = 5 (above 4 ceiling)	400 Bad Request — out of range
-TC05	Master without bachelor fields	Submitted to Master programme without bachelor_school_name	400 Bad Request — bachelor fields required
-TC06	Valid Master application	All required fields including bachelor degree info	201 Created — application stored
-TC07	One-per-university rule	Second application by same student to a different programme at the same university	409 Conflict — duplicate university
-TC08	Unauthenticated request	No auth cookie attached	401 Unauthorized
+
+| Test ID | Scenario | Input | Expected Result |
+|---|---|---|---|
+| TC01 | Valid Bachelor application | All required fields filled, valid GPA in 0–4 range | 201 Created — application stored, status "pending" |
+| TC02 | Missing required field | high_school_name omitted | 400 Bad Request — validation error |
+| TC03 | Invalid graduation year (boundary) | graduation_year = 1800 (below 1950 floor) | 400 Bad Request — out of range |
+| TC04 | Invalid GPA (boundary) | gpa = 5 (above 4 ceiling) | 400 Bad Request — out of range |
+| TC05 | Master without bachelor fields | Submitted to Master programme without bachelor_school_name | 400 Bad Request — bachelor fields required |
+| TC06 | Valid Master application | All required fields including bachelor degree info | 201 Created — application stored |
+| TC07 | One-per-university rule | Second application by same student to a different programme at the same university | 409 Conflict — duplicate university |
+| TC08 | Unauthenticated request | No auth cookie attached | 401 Unauthorized |
+
+
+
+
 
 # 4.2 Test Case: Staff Program Creation 
-Test ID	Scenario	Input	Expected Result
-TC01	Valid program	All bilingual fields and a valid required_document_types array	201 Created — programme stored with bilingual content
-TC02	Cross-university security	Staff sends a university_id matching a different university	201 Created — university_id ignored, program created at staff’s own university
-TC03	Missing Albanian title	title_sq is empty	400 Bad Request — bilingual validation
-TC04	Invalid degree type	degree_type = "Doctorate" (not allowed)	400 Bad Request
-TC05	Negative tuition fee	tuition_fee = -100	400 Bad Request
-TC06	Invalid document type key	required_document_types contains "fake_document_type"	400 Bad Request
-TC07	Unauthenticated request	No auth cookie	401 Unauthorized
-TC08	Wrong role	Authenticated as student attempting staff action	403 Forbidden
-TC09	Empty document requirements	required_document_types = []	201 Created — zero required documents allowed
 
-The most important test in this set is TC02 for the staff program, which verifies a critical security boundary: the staff member’s university_id is read from the database based on the authenticated user, never accepted from the request body. Without this protection, a malicious staff member could create programs at universities they don’t belong to.
+| Test ID | Scenario | Input | Expected Result |
+|---|---|---|---|
+| TC01 | Valid programme | All bilingual fields and a valid required_document_types array | 201 Created — programme stored with bilingual content |
+| TC02 | Cross-university security | Staff sends a university_id matching a different university | 201 Created — university_id ignored, programme created at staff's own university |
+| TC03 | Missing Albanian title | title_sq is empty | 400 Bad Request — bilingual validation |
+| TC04 | Invalid degree type | degree_type = "Doctorate" (not allowed) | 400 Bad Request |
+| TC05 | Negative tuition fee | tuition_fee = -100 | 400 Bad Request |
+| TC06 | Invalid document type key | required_document_types contains "fake_document_type" | 400 Bad Request |
+| TC07 | Unauthenticated request | No auth cookie | 401 Unauthorized |
+| TC08 | Wrong role | Authenticated as student attempting staff action | 403 Forbidden |
+| TC09 | Empty document requirements | required_document_types = [] | 201 Created — zero required documents allowed |
+
+
+
 
 # 5. Writing Test Code
+
+
 The tests were written using Jest as the test runner and assertion library, with Supertest to send simulated HTTP requests directly to the Express application without spinning up a live server. This combination is the standard for testing Node.js / Express APIs.
 The tests run against a dedicated test database (unigate_test), separate from the development database, so test data never contaminates real records. A setup.js helper resets the schema and seeds a known minimal dataset before each test, ensuring every test starts from a clean, predictable state.
 
 - TC07 :the one-per-university rule
+
+
 test('TC07: blocks second application to the same university', async () => {
   const cookie = await loginAsStudent();
 
@@ -81,6 +98,9 @@ test('TC07: blocks second application to the same university', async () => {
 });
 
   - TC02:the security boundary
+
+
+
 This test checks a security rule: a staff member should only be able to create programmes at their own university, even if they try to cheat.
 
 test('TC02: ignores university_id sent in request body', async () => {
@@ -99,6 +119,8 @@ test('TC02: ignores university_id sent in request body', async () => {
 });
 
 - TC05:Master applications require bachelor fields
+
+
 This test checks that the system correctly rejects a Master's application when the bachelor's degree fields are missing. Since a Master's programme requires proof of a previous degree, the server must ask for extra information that a Bachelor's application does not need. In this test, a student submits an application for a Master's programme but leaves out the bachelor's degree details on purpose. The expected result is a 400 error, confirming that the server catches the missing fields and blocks the incomplete application.
 
 test('TC05: rejects Master application missing bachelor fields', async () => {
