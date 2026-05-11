@@ -63,7 +63,7 @@ The tests run against a dedicated test database (unigate_test), separate from th
 
 - # TC07 : the one-per-university rule
 
-  ```javascript
+```javascript
 test('TC07: blocks second application to the same university', async () => {
   const cookie = await loginAsStudent();
 
@@ -99,6 +99,8 @@ test('TC07: blocks second application to the same university', async () => {
   expect(res.status).toBe(409);
 });
 ```
+
+ 
 
 
 
