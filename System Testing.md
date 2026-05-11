@@ -15,7 +15,10 @@ For this report, we tested two critical components of the UniGate platform: the 
 
 # 4.Preparing Test Cases
 
-The test cases were designed to cover three categories of input: valid inputs (where everything is correct and the request should succeed), invalid inputs (where something is wrong, such as a missing field, a security violation, or a broken business rule), and boundary conditions (edge values that sit right at the limit of what is allowed, such as a GPA of exactly 4 or a graduation year of 1950).
+The test cases were designed to cover three categories of input: 
+- valid inputs (where everything is correct and the request should succeed),
+- invalid inputs (where something is wrong, such as a missing field, a security violation, or a broken business rule),
+- boundary conditions (edge values that sit right at the limit of what is allowed, such as a GPA of exactly 4 or a graduation year of 1950).
 For each case, the expected behaviour was determined from the system requirements document and the validation rules implemented in the route handlers.
 
 # 4.1 Test Case: Application Submission 
@@ -23,12 +26,12 @@ For each case, the expected behaviour was determined from the system requirement
 | Test ID | Scenario | Input | Expected Result |
 |---|---|---|---|
 | TC01 | Valid Bachelor application | All required fields filled, valid GPA in 0–4 range | 201 Created — application stored, status "pending" |
-| TC02 | Missing required field | high_school_name omitted | 400 Bad Request — validation error |
-| TC03 | Invalid graduation year (boundary) | graduation_year = 1800 (below 1950 floor) | 400 Bad Request — out of range |
-| TC04 | Invalid GPA (boundary) | gpa = 5 (above 4 ceiling) | 400 Bad Request — out of range |
-| TC05 | Master without bachelor fields | Submitted to Master programme without bachelor_school_name | 400 Bad Request — bachelor fields required |
-| TC06 | Valid Master application | All required fields including bachelor degree info | 201 Created — application stored |
-| TC07 | One-per-university rule | Second application by same student to a different programme at the same university | 409 Conflict — duplicate university |
+| TC02 | Missing required field | high_school_name omitted | 400 Bad Request: validation error |
+| TC03 | Invalid graduation year (boundary) | graduation_year = 1800 (below 1950 floor) | 400 Bad Request: out of range |
+| TC04 | Invalid GPA (boundary) | gpa = 5 (above 4 ceiling) | 400 Bad Request: out of range |
+| TC05 | Master without bachelor fields | Submitted to Master programme without bachelor_school_name | 400 Bad Request: bachelor fields required |
+| TC06 | Valid Master application | All required fields including bachelor degree info | 201 Created : application stored |
+| TC07 | One-per-university rule | Second application by same student to a different programme at the same university | 409 Conflict : duplicate university |
 | TC08 | Unauthenticated request | No auth cookie attached | 401 Unauthorized |
 
 
@@ -39,15 +42,15 @@ For each case, the expected behaviour was determined from the system requirement
 
 | Test ID | Scenario | Input | Expected Result |
 |---|---|---|---|
-| TC01 | Valid programme | All bilingual fields and a valid required_document_types array | 201 Created — programme stored with bilingual content |
-| TC02 | Cross-university security | Staff sends a university_id matching a different university | 201 Created — university_id ignored, programme created at staff's own university |
-| TC03 | Missing Albanian title | title_sq is empty | 400 Bad Request — bilingual validation |
+| TC01 | Valid programme | All bilingual fields and a valid required_document_types array | 201 Created :program stored with bilingual content |
+| TC02 | Cross-university security | Staff sends a university_id matching a different university | 201 Created : university_id ignored, programme created at staff's own university |
+| TC03 | Missing Albanian title | title_sq is empty | 400 Bad Request : bilingual validation |
 | TC04 | Invalid degree type | degree_type = "Doctorate" (not allowed) | 400 Bad Request |
 | TC05 | Negative tuition fee | tuition_fee = -100 | 400 Bad Request |
 | TC06 | Invalid document type key | required_document_types contains "fake_document_type" | 400 Bad Request |
 | TC07 | Unauthenticated request | No auth cookie | 401 Unauthorized |
 | TC08 | Wrong role | Authenticated as student attempting staff action | 403 Forbidden |
-| TC09 | Empty document requirements | required_document_types = [] | 201 Created — zero required documents allowed |
+| TC09 | Empty document requirements | required_document_types = [] | 201 Created : zero required documents allowed |
 
 
 
@@ -58,7 +61,7 @@ For each case, the expected behaviour was determined from the system requirement
 The tests were written using Jest as the test runner and assertion library, with Supertest to send simulated HTTP requests directly to the Express application without spinning up a live server. This combination is the standard for testing Node.js / Express APIs.
 The tests run against a dedicated test database (unigate_test), separate from the development database, so test data never contaminates real records. A setup.js helper resets the schema and seeds a known minimal dataset before each test, ensuring every test starts from a clean, predictable state.
 
-- TC07 :the one-per-university rule
+- # TC07 : the one-per-university rule
 
 
 test('TC07: blocks second application to the same university', async () => {
@@ -97,7 +100,9 @@ test('TC07: blocks second application to the same university', async () => {
   expect(res.status).toBe(409);
 });
 
-  - TC02:the security boundary
+  
+  
+  - # TC02 : the security boundary
 
 
 
@@ -118,7 +123,7 @@ test('TC02: ignores university_id sent in request body', async () => {
   expect(res.body.data.university_id).toBe(seedData.tirana.id);
 });
 
-- TC05:Master applications require bachelor fields
+- # TC05 : Master applications require bachelor fields
 
 
 This test checks that the system correctly rejects a Master's application when the bachelor's degree fields are missing. Since a Master's programme requires proof of a previous degree, the server must ask for extra information that a Bachelor's application does not need. In this test, a student submits an application for a Master's programme but leaves out the bachelor's degree details on purpose. The expected result is a 400 error, confirming that the server catches the missing fields and blocks the incomplete application.
@@ -161,14 +166,23 @@ The first test runs revealed a subtle inconsistency in the codebase: the applica
 
 
 
+
+
+
+
+
+
+
 <img width="974" height="201" alt="image" src="https://github.com/user-attachments/assets/b55185c9-c7fc-42a3-b4cb-df878c65d5a5" />
 
 
 # 7. Test Coverage
-Test coverage measures how much of the code is actually checked by the tests. Good coverage means that the most important behaviours, rules, and failure cases have been tested at least once. For UniGate, the goal was to make sure every important decision in the code — such as whether a field is valid or whether a user has permission — had at least one test checking both the passing and failing case.
+Test coverage measures how much of the code is actually checked by the tests. Good coverage means that the most important behaviours, rules, and failure cases have been tested at least once. For UniGate, the goal was to make sure every important decision in the code such as whether a field is valid or whether a user has permission had at least one test checking both the passing and failing case.
 
 # 7.1 What is covered
+
 Application Submission:
+
 - A valid Bachelor and a valid Master application both succeed
 - Missing required fields are caught and rejected
 - GPA and graduation year are checked to be within the allowed range
@@ -189,15 +203,16 @@ Staff Program Creation:
 
 # 7.2 What is not yet covered
 
-•	Update and delete endpoints for both resources are not directly tested in this report. The same testing pattern would apply.
-•	File upload validation for document submission and program cover images is not covered, partly because file upload tests require additional Supertest configuration for multipart bodies.
-•	Frontend behaviour is out of scope for these tests as they verify backend correctness only. UI-level testing would be a separate effort using a tool like Vitest with React Testing Library.
-•	End-to-end flows (a real browser navigating through the application) would be covered by tools like Playwright or Cypress in a more mature testing strategy.
+- Update and delete endpoints for both resources are not directly tested in this report. The same testing pattern would apply.
+- File upload validation for document submission and program cover images is not covered, partly because file upload tests require additional Supertest configuration for multipart bodies.
+- Frontend behaviour is out of scope for these tests as they verify backend correctness only. UI-level testing would be a separate effort using a tool like Vitest with React Testing Library.
+- End-to-end flows (a real browser navigating through the application) would be covered by tools like Playwright or Cypress in a more mature testing strategy.
 
 
 # 7.3 What testing revealed
 
 -  An inconsistency in API response shape was discovered. Some routes return status: ‘ok’ and others status: ‘success’. The project specification calls for ‘ok’. This inconsistency was previously invisible because clients did not check the field, but it would cause confusion for any future developer reading the code or building external integrations.
+
 - The TC02 security test confirmed that a staff member cannot create a programme at a university they do not belong to, even if they try to change the university in the request. This test now acts as a permanent check — if someone accidentally removes that protection in the future, the test will catch it immediately. This is one of the most valuable things testing provides: not just finding bugs today, but making sure the same bugs cannot come back tomorrow.
 
 # 7.4 Conclusion
